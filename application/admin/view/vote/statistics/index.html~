@@ -73,7 +73,7 @@
         <div class="panel panel-default panel-intro panel-statistics">
             <div class="panel-body">
                 <div class="pull-left">
-                    <h4>总参选项数</h4>
+                    <h4>总参赛人数</h4>
                     <h3>{$subject.players}</h3>
                 </div>
 
@@ -138,7 +138,7 @@
             <div class="col-xs-3" style="margin-bottom:15px;">
                 <div class="panel panel-default panel-intro panel-statistics">
                     <div class="panel-body">
-                        <h3>待审核参选项目数</h3>
+                        <h3>待审核报名用户数</h3>
                         <h4>{$unsettlePlayer} 篇</h4>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                 <table class="table" style="width:100%">
                     <thead>
                     <tr>
-                        <th width="80%">参选项</th>
+                        <th width="80%">参赛者</th>
                         <th class="text-center">得票数</th>
                     </tr>
                     </thead>
@@ -194,7 +194,7 @@
                 <table class="table" style="width:100%">
                     <thead>
                     <tr>
-                        <th width="80%">参选项</th>
+                        <th width="80%">参赛者</th>
                         <th width="20%" class="text-center">浏览次数</th>
                     </tr>
                     </thead>
@@ -225,7 +225,7 @@
                 <table class="table" style="width:100%">
                     <thead>
                     <tr>
-                        <th width="80%">参选项</th>
+                        <th width="80%">参赛者</th>
                         <th width="20%" class="text-center">评论次数</th>
                     </tr>
                     </thead>

@@ -21,8 +21,8 @@
                 <div class="panel-body">
                     <h2 class="page-header">
                         {:__('Member center')}
-                        <a href="{:url('user/profile')}" class="btn btn-success pull-right"><i class="fa fa-pencil"></i>
-                            {:__('Profile')}</a>
+                        <!--a href="{:url('user/profile')}" class="btn btn-success pull-right"><i class="fa fa-pencil"></i>
+                            {:__('Profile')}</a-->
                     </h2>
                     <div class="row user-baseinfo">
                         <div class="col-md-3 col-sm-3 col-xs-2 text-center user-center">
@@ -34,11 +34,11 @@
                             <!-- Content -->
                             <div class="ui-content">
                                 <!-- Heading -->
-                                <h4><a href="{:url('user/profile')}">{$user.nickname}</a></h4>
+                                <h4><a href="">{$user.nickname}</a></h4>
                                 <!-- Paragraph -->
                                 <p>
-                                    <a href="{:url('user/profile')}">
-                                        {$user.bio|default=__("This guy hasn't written anything yet")}
+                                    <a href="">
+                                        {$user.bio|default=__("邻里一家人 互助大家亲")}
                                     </a>
                                 </p>
                                 <!-- Success -->
@@ -50,13 +50,13 @@
                             <div class="ui-content">
                                 <div class="basicinfo">
                                     <div class="row">
-                                        <div class="col-xs-4 col-md-2">{:__('Money')}</div>
+                                        <div class="col-xs-4 col-md-2">{:__('Buildingno')}</div>
                                         <div class="col-xs-8 col-md-4">
-                                            <a href="javascript:;" class="viewmoney">{$user.money}</a>
+                                            <a href="javascript:;" class="viewmoney">{$user.buildingno}</a>
                                         </div>
-                                        <div class="col-xs-4 col-md-2">{:__('Score')}</div>
+                                        <div class="col-xs-4 col-md-2">{:__('Parkingno')}</div>
                                         <div class="col-xs-8 col-md-4">
-                                            <a href="javascript:;" class="viewscore">{$user.score}</a>
+                                            <a href="javascript:;" class="viewscore">{$user.parkingno}</a>
                                         </div>
                                     </div>
                                     <div class="row">

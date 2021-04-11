@@ -46,6 +46,8 @@ return [
     'You are not logged in'                      => '你当前还未登录',
     'You\'ve logged in, do not login again'      => '你已经登录,请不要重复登录',
     'This guy hasn\'t written anything yet'      => '这个人很懒,啥也没写',
+    'Buildingno'											 => '楼栋单元号',
+    'Parkingno'											 => '停车位',
     'Profile'                                    => '个人资料',
     'Old password'                               => '旧密码',
     'New password'                               => '新密码',

@@ -47,7 +47,7 @@
                         <span><strong>排行榜</strong></span>
                     </h2>
                     <div class="pix-black-gray-light big-text text-center">
-                        <span>实时当前参选{$__subject__.playername}的排名信息</span>
+                        <span>实时当前参赛{$__subject__.playername}的排名信息</span>
                     </div>
                 </div>
             </div>

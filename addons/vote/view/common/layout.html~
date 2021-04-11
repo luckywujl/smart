@@ -58,9 +58,9 @@
                                 <li>
                                     <a href="{:url('index/user/index')}">业主中心</a>
                                 </li>
-                                <!--li>
+                                <li>
                                     <a href="{:url('index/user/profile')}">个人资料</a>
-                                </li-->
+                                </li>
                                 <li>
                                     <a href="{:url('index/user/logout')}">退出登录</a>
                                 </li>
@@ -112,9 +112,9 @@
                         <li>
                             <a href="{:url('index/user/index')}">业主中心</a>
                         </li>
-                        <!--li>
+                        <li>
                             <a href="{:url('index/user/profile')}">个人资料</a>
-                        </li-->
+                        </li>
                         <li>
                             <a href="{:url('index/user/logout')}">退出登录</a>
                         </li>

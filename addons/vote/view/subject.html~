@@ -72,7 +72,7 @@
                         <span><b>统计报表</b></span>
                     </h2>
                     <p class="pix-black-gray-light big-text text-center">
-                        <span>当前活动的实时统计信息和当前参选{$__subject__.playername}投票的实时信息</span>
+                        <span>当前赛程的实时统计信息和当前参赛{$__subject__.playername}投票的实时信息</span>
                     </p>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                         {$__subject__.players|number_format}
                     </h1>
                     <h5 class="pix-black-gray-dark pix-no-margin-top">
-							<span><strong>选项数量</strong>
+							<span><strong>参赛人数</strong>
 							</span>
                     </h5>
                 </div>

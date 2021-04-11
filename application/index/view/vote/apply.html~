@@ -18,7 +18,7 @@
     <div id="content-container" class="container">
         <div class="row">
             <div class="col-md-3">
-                {include file="common/sidenav" /}
+              
             </div>
             <div class="col-md-9">
                 <div class="panel panel-default panel-user">
@@ -26,7 +26,7 @@
                         <div class="page-header panel-post">
                             <h2>{$title}</h2>
                         </div>
-                        {volist name='recordList' id='item'}
+                        {volist name='playerList' id='item'}
                         <div class="row">
                             <div class="col-md-3 text-center">
                                 <div style="padding:15px;">
@@ -39,14 +39,24 @@
                                 <h4>
                                     <a href="{$item.subject.url}" target="_blank">{$item.subject.title}</a>
                                 </h4>
-                                <p class="text-muted">参选{$item.subject.playername}：<a href="{$item.player.url}" target="_blank">{$item.player.nickname}</a></p>
-                                <p class="text-muted">投票时间：{$item.createtime|datetime}</p>
+                                <p class="text-muted">报名时间：{$item.createtime|datetime}</p>
+                                <div>
+                                    {if $item['status'] == 'normal'}
+                                    <a class="btn btn-success" href="{$item.url}" target="_blank"><i class="fa fa-user"></i> 立即查看</a>
+                                    {elseif $item['status'] == 'rejected'}
+                                    <a class="btn btn-danger" href="{$item.subject.apply_url}?id={$item.id}" data-toggle="tooltip" title="{$item.memo}"><i class="fa fa-pencil"></i> 被拒绝</a>
+                                    <a class="btn btn-success" href="{$item.url}"><i class="fa fa-eye-slash"></i> 预览</a>
+                                    {elseif $item['status'] == 'hidden' /}
+                                    <a class="btn btn-info" href="{$item.subject.apply_url}?id={$item.id}" data-toggle="tooltip" title="请耐心等待后台审核,审核前你可以继续修改"><i class="fa fa-pencil"></i> 正在审核</a>
+                                    <a class="btn btn-success" href="{$item.url}"><i class="fa fa-eye-slash"></i> 预览</a>
+                                    {/if}
+                                </div>
                             </div>
                         </div>
                         <hr>
                         {/volist}
-                        <div class="text-center">{:$recordList->isEmpty()?"暂未参与任何投票":""}</div>
-                        <div class="pager">{$recordList->render()}</div>
+                        <div class="text-center">{:$playerList->isEmpty()?"暂未报名任何投票":""}</div>
+                        <div class="pager">{$playerList->render()}</div>
                     </div>
                 </div>
             </div>
