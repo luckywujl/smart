@@ -10,6 +10,12 @@ return [
             'geetest',
             'third',
         ],
+        'response_send' => [
+            'loginbgindex',
+        ],
+        'index_login_init' => [
+            'loginbgindex',
+        ],
         'view_filter' => [
             'vote',
         ],

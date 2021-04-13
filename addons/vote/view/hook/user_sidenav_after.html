@@ -9,4 +9,8 @@
     {if in_array('record', $usersidebar)}
     <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/vote/record')}"><i class="fa fa-list fa-fw"></i> {:__('我的投票记录')}</a></li>
     {/if}
+    <li class="list-group-heading">{:__('')}</li>
+    <li class="list-group-heading">{:__('问题反馈')}</li>
+    <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/question/record')}"><i class="fa fa-users fa-fw"></i> {:__('我反映的问题')}</a></li>
+    
 </ul>
