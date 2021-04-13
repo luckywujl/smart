@@ -1,0 +1,16 @@
+<ul class="list-group">
+    <li class="list-group-heading">{:__('投票管理')}</li>
+    {if in_array('subject', $usersidebar)}
+    <!--li class="list-group-item {:check_nav_active('vote/subject')}"><a href="{:url('index/vote/subject')}"><i class="fa fa-pencil fa-fw"></i> {:__('我创建的投票')}</a></li-->
+    {/if}
+    {if in_array('apply', $usersidebar)}
+    <li class="list-group-item {:check_nav_active('vote/apply')}"><a href="{:url('index/vote/apply')}"><i class="fa fa-users fa-fw"></i> {:__('我报名的投票')}</a></li>
+    {/if}
+    {if in_array('record', $usersidebar)}
+    <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/vote/record')}"><i class="fa fa-list fa-fw"></i> {:__('我的投票记录')}</a></li>
+    {/if}
+    <li class="list-group-heading">{:__('')}</li>
+    <li class="list-group-heading">{:__('问题反馈')}</li>
+    <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/question/record')}"><i class="fa fa-users fa-fw"></i> {:__('我反映的问题')}</a></li>
+    
+</ul>

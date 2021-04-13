@@ -6,11 +6,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.init({
                 extend: {
                     index_url: 'question/questioninfo/index' + location.search,
-                    //add_url: 'question/questioninfo/add',
+                    add_url: 'question/questioninfo/add',
                     edit_url: 'question/questioninfo/edit',
-                    //del_url: 'question/questioninfo/del',
-                    //multi_url: 'question/questioninfo/multi',
-                    //import_url: 'question/questioninfo/import',
+                    del_url: 'question/questioninfo/del',
+                    multi_url: 'question/questioninfo/multi',
+                    import_url: 'question/questioninfo/import',
                     table: 'question_info',
                 }
             });

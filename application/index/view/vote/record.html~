@@ -39,7 +39,7 @@
                                 <h4>
                                     <a href="{$item.subject.url}" target="_blank">{$item.subject.title}</a>
                                 </h4>
-                                <p class="text-muted">参赛{$item.subject.playername}：<a href="{$item.player.url}" target="_blank">{$item.player.nickname}</a></p>
+                                <p class="text-muted">参选{$item.subject.playername}：<a href="{$item.player.url}" target="_blank">{$item.player.nickname}</a></p>
                                 <p class="text-muted">投票时间：{$item.createtime|datetime}</p>
                             </div>
                         </div>

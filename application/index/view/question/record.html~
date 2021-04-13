@@ -29,18 +29,15 @@
                         {volist name='recordList' id='item'}
                         <div class="row">
                             <div class="col-md-3 text-center">
-                                <div style="padding:15px;">
-                                    <a href="{$item.subject.url}">
-                                        <img class="img-responsive img-border" src="{$item.subject.image}" onerror="this.src='__CDN__/assets/addons/vote/img/noimage.jpg';this.onerror=null;">
-                                    </a>
-                                </div>
+                               
                             </div>
                             <div class="col-md-9">
                                 <h4>
-                                    <a href="{$item.subject.url}" target="_blank">{$item.subject.title}</a>
+                                    <a href="" target="_blank">{$item.question_title}</a>
                                 </h4>
-                                <p class="text-muted">参赛{$item.subject.playername}：<a href="{$item.player.url}" target="_blank">{$item.player.nickname}</a></p>
-                                <p class="text-muted">投票时间：{$item.createtime|datetime}</p>
+                                
+                                <p class="text-muted">提交时间：{$item.question_datetime|datetime}</p>
+                                <p class="text-muted">问题状态：{$item.question_status}：</p>
                             </div>
                         </div>
                         <hr>

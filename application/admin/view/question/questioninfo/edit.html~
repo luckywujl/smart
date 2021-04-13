@@ -1,0 +1,84 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_title" class="form-control" name="row[question_title]" type="text" value="{$row.question_title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-question_content" class="form-control editor" rows="5" name="row[question_content]" cols="50">{$row.question_content|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_person')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_person" class="form-control" name="row[question_person]" type="text" value="{$row.question_person|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_person_tel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_person_tel" class="form-control" name="row[question_person_tel]" type="text" value="{$row.question_person_tel|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_type" data-rule="required" data-source="question/index" class="form-control selectpage" name="row[question_type]" type="text" value="{$row.question_type|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_datetime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_datetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{:$row.question_datetime?datetime($row.question_datetime):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_files')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-question_files" class="form-control" size="50" name="row[question_files]" type="text" value="{$row.question_files|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-question_files" class="btn btn-danger faupload" data-input-id="c-question_files" data-multiple="true" data-preview-id="p-question_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-question_files" class="btn btn-primary fachoose" data-input-id="c-question_files" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-question_files"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-question_files"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_operaotr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_operaotr" class="form-control" name="row[question_operaotr]" type="text" value="{$row.question_operaotr|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_operate_option')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-question_operate_option" class="form-control" name="row[question_operate_option]" type="text" value="{$row.question_operate_option|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="questionStatusList" item="vo"}
+            <label for="row[question_status]-{$key}"><input id="row[question_status]-{$key}" name="row[question_status]" type="radio" value="{$key}" {in name="key" value="$row.question_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
