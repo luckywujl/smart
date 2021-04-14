@@ -90,7 +90,18 @@
             <input id="c-question_operate_option" class="form-control" name="row[question_operate_option]" type="text">
         </div>
     </div>
-    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="questionStatusList" item="vo"}
+            <label for="row[question_status]-{$key}"><input id="row[question_status]-{$key}" name="row[question_status]" type="radio" value="{$key}" {in name="key" value="0"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
                             {/if}
                             <div class="form-group layer-footer">
                                 <label class="control-label col-xs-12 col-sm-2"></label>

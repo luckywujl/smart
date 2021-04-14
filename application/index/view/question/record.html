@@ -23,8 +23,10 @@
             <div class="col-md-9">
                 <div class="panel panel-default panel-user">
                     <div class="panel-body">
+                        
                         <div class="page-header panel-post">
                             <h2>{$title}</h2>
+                            <a href="{:url('index/question/post')}" class="btn btn-info btn-post"><i class="fa fa-edit"></i> 提交新的问题</a>
                         </div>
                         {volist name='recordList' id='item'}
                         <div class="row">
@@ -42,7 +44,7 @@
                         </div>
                         <hr>
                         {/volist}
-                        <div class="text-center">{:$recordList->isEmpty()?"暂未参与任何投票":""}</div>
+                        <div class="text-center">{:$recordList->isEmpty()?"暂未提交任何问题":""}</div>
                         <div class="pager">{$recordList->render()}</div>
                     </div>
                 </div>
