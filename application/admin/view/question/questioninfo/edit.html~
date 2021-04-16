@@ -21,19 +21,19 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_user_tel')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_user_tel" class="form-control" name="row[question_user_tel]" type="text" value="{$row.user_user_tel|htmlentities}">
+            <input id="c-question_user_tel" class="form-control" name="row[question_user_tel]" type="text" value="{$row.question_user_tel|htmlentities}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_type')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_type" data-rule="required" data-source="question/index" class="form-control selectpage" name="row[question_type]" type="text" value="{$row.question_type|htmlentities}">
+            <input id="c-question_type" data-rule="required" data-source="question/type/index" data-field="question_type" data-primary-key="question_type" class="form-control selectpage" name="row[question_type]" type="text" value="{$row.question_type|htmlentities}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_datetime')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_datetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{:$row.question_datetime?datetime($row.question_datetime):''}">
+            <input id="c-question_datetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{$item.question_datetime|datetime}" >
         </div>
     </div>
     <div class="form-group">

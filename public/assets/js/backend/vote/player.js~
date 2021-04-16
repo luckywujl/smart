@@ -19,7 +19,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             var columns = [
                 {checkbox: true},
-                //{field: 'id', title: __('Id')},
+                {field: 'id', title: __('Id')},
                 {field: 'subject_id', title: __('Subject_id'), formatter: Table.api.formatter.search},
                 {field: 'subject.title', title: __('Subject_title'), formatter: Table.api.formatter.search},
                 {field: 'user_id', title: __('User_id'), formatter: Table.api.formatter.search},

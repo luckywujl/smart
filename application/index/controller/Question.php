@@ -33,7 +33,25 @@ class Question extends Frontend
         if (!in_array('record', explode(',', $config['usersidebar']))) {
             $this->error("模块暂未开放");
         }
-        $recordList = Record::where('question_user_id', $this->auth->id)->order('question_id', 'desc')->paginate(10);
+        $recordList = Record::where(['question_user_id'=>$this->auth->id])->order('question_id', 'desc')->paginate(10);
+        foreach($recordList as $k=>$v){
+    	  	if($v['question_status']==0) {
+    	  		$v['question_status'] = '已提交';
+    	  	} 
+    	  	if($v['question_status']==1) {
+    	  		$v['question_status'] = '已受理';
+    	  	} 
+    	  	if($v['question_status']==2) {
+    	  		$v['question_status'] = '处理中';
+    	  	} 
+    	  	if($v['question_status']==3) {
+    	  		$v['question_status'] = '已完结';
+    	  	} 
+    	  	//缩略图处理
+    	  	 $pos=strpos($v['question_files'], ",");
+    	  	 
+          $v['question_one']=$pos>0?substr($v['question_files'], 0,$pos):$v['question_files'];
+    	  }
         $this->view->assign("recordList", $recordList);
         $this->view->assign("title", "我反映的问题");
         return $this->view->fetch();
@@ -47,42 +65,80 @@ class Question extends Frontend
         if (!in_array('subject', explode(',', $config['usersidebar']))) {
             $this->error("模块暂未开放");
         }
-        $subject = [];
+        $record = [];
         $id = $this->request->get('id/d');
         if ($id) {
-            $subject = Subject::get($id);
-            if (!$subject) {
-                $this->error("未找到指定的项目");
+            $record = Record::get($id);
+            if($record['question_status']==0) {
+    	  		 $record['question_status'] = '已提交';
+    	   	} 
+    	   	if($record['question_status']==1) {
+    	  		 $record['question_status'] = '已受理';
+    	   	} 
+    	   	if($record['question_status']==2) {
+    	  		 $record['question_status'] = '处理中';
+    	   	} 
+    	   	if($record['question_status']==3) {
+    	  		 $record['question_status'] = '已完结';
+    	   	} 
+            if (!$record) {
+                $this->error("未找到指定的问题");
+                
             }
         }
-        if ($subject && $subject['user_id'] != $this->auth->id) {
+        if ($record && $record['question_user_id'] != $this->auth->id) {
             $this->error("无法进行越权操作");
         }
-        if ($subject && $subject['status'] == 1) {
-            $this->error("已审核的投票无法进行修改");
+        if ($record && $record['question_status'] == 1) {
+            $this->error("已受理的问题无法进行修改");
         }
         if ($this->request->isPost()) {
             $this->token();
 
             $row = $this->request->post("row/a", '', 'trim,xss_clean');
             $row = array_diff_key($row, array_reverse(explode(',', $config['availablefields'])));
-            $row['user_id'] = $this->auth->id;
-            if ($subject) {
-                $subject->allowField(true)->save($row);
-                $this->success("更新成功", "index/vote/subject");
+            $row['question_user_id'] = $this->auth->id;
+            $row['question_user'] = $this->auth->username; 
+				$row['question_datetime'] = time();           
+            if ($record) {
+            	if($record['question_status']=='已完结') {
+    	  		 $record['question_status'] = 3;
+    	   	} 
+    	   	if($record['question_status']=='处理中') {
+    	  		 $record['question_status'] = 2;
+    	   	} 
+    	   	if($record['question_status']=='已受理') {
+    	  		 $record['question_status'] = 1;
+    	   	} 
+            	if($record['question_status']=='已提交') {
+    	  		 $record['question_status'] = 0;
+    	   	} 
+    	   	
+    	   	
+    	   	
+                $record->allowField(true)->save($row);
+                $this->success("更新成功", "index/question/record");
             } else {
-                (new Subject())->allowField(true)->save($row);
-                $this->success("添加成功", "index/vote/subject");
+            	 $row['question_status'] = 0;
+                (new Record())->allowField(true)->save($row);
+                $this->success("提交成功", "index/question/record");
 
             }
         }
-        $typeList = Subject::getTypeList();
-        unset($typeList['array']);
-        $this->view->assign('subject', $subject);
-        $this->view->assign('typeList', $typeList);
-        $this->view->assign("row", $subject);
-        $this->view->assign("availableFields", explode(',', $config['availablefields']));
+        //$typeList = Subject::getTypeList();
+        //unset($typeList['array']);
+  
+        $this->view->assign('record', $record);
+        //$this->view->assign('typeList', $typeList);
+        
+        //$this->view->assign("availableFields", explode(',', $config['availablefields']));
         $this->view->assign("title", $id ? "修改问题" : "反映问题");
+        if(!$id) {
+        	$record['question_status'] = '已提交';
+        	$record['question_datetime'] = time();
+
+        	}
+        $this->view->assign("row", $record);
         return $this->view->fetch();
     }
     

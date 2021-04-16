@@ -64,10 +64,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                 {
                                     'name': 'player',
                                     'title': function (row) {
-                                        return '参赛者管理[' + row.title + ']';
+                                        return '参选项管理[' + row.title + ']';
                                     },
                                     'icon': 'fa fa-pencil',
-                                    'text': '参赛者管理',
+                                    'text': '参选项管理',
                                     'classname': 'btn btn-xs btn-info btn-dialog',
                                     'url': 'vote/player/index/subject_id/{ids}',
                                     'extend': 'data-area=\'["95%","95%"]\''

@@ -5,13 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'question/type/index' + location.search,
-                    add_url: 'question/type/add',
-                    edit_url: 'question/type/edit',
-                    del_url: 'question/type/del',
-                    multi_url: 'question/type/multi',
-                    import_url: 'question/type/import',
-                    table: 'question_type',
+                    index_url: 'wechat/config/index',
+                    add_url: 'wechat/config/add',
+                    edit_url: 'wechat/config/edit',
+                    del_url: 'wechat/config/del',
+                    multi_url: 'wechat/config/multi',
+                    table: 'wechat_config',
                 }
             });
 
@@ -20,13 +19,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
-                pk: 'question_type_id',
-                sortName: 'question_type_id',
+                pk: 'id',
+                sortName: 'id',
                 columns: [
                     [
-                        {checkbox: true},
-                        {field: 'question_type_id', title: __('Question_type_id')},
-                        {field: 'question_type', title: __('Question_type'), operate: 'LIKE'},
+                        {field: 'state', checkbox: true},
+                        //{field: 'id', title: __('Id')},
+                        {field: 'name', title: __('Name')},
+                        {field: 'title', title: __('Title')},
+                        {field: 'createtime', title: __('Createtime'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
+                        {field: 'updatetime', title: __('Updatetime'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -44,6 +46,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+                $("input[name='row[type]']:checked").trigger("click");
             }
         }
     };

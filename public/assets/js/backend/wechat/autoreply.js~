@@ -22,7 +22,7 @@ define(['jquery', 'bootstrap', 'backend', 'form', 'table'], function ($, undefin
                 columns: [
                     [
                         {field: 'state', checkbox: true, },
-                        //{field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id')},
                         {field: 'title', title: __('Title')},
                         {field: 'text', title: __('Text')},
                         {field: 'eventkey', title: __('Event key')},

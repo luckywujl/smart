@@ -31,7 +31,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'question_user_id', title: __('Question_user_id'), operate: 'LIKE',visable:false},
                         {field: 'question_user', title: __('Question_user'), operate: 'LIKE'},
                         {field: 'question_user_tel', title: __('Question_user_tel'), operate: 'LIKE'},
-                        {field: 'question_type', title: __('Question_type'), operate: 'LIKE'},
+                        {field: 'question_type', title: __('Question_type'), operate: 'LIKE',formatter: Table.api.formatter.search},
                         {field: 'question_datetime', title: __('Question_datetime'), operate: 'RANGE', addclass: 'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'question_files', title: __('Question_files'), operate: false, events: Table.api.events.image, formatter: Table.api.formatter.image},
                        // {field: 'image', title: __('Image'), operate: false, events: Table.api.events.image, formatter: Table.api.formatter.image},

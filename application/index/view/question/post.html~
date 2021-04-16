@@ -24,54 +24,50 @@
                 <div class="panel panel-default panel-user">
                     <div class="panel-body">
                         <div class="page-header panel-post">
-                            <h2>{:$row?'修改':'提交'}问题</h2>
+                            <h2>{:$record?'修改':'提交'}问题</h2>
                         </div>
                         <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
                             {:token()}
                             <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_title')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_title" class="form-control" name="row[question_title]" type="text">
+            <input id="c-question_title" {:$row.question_status=='已提交'?"":'readonly="readonly"'} class="form-control" name="row[question_title]" type="text" value="{$row.question_title|default=''}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_content')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <textarea id="c-question_content" class="form-control editor" rows="5" name="row[question_content]" cols="50"></textarea>
+            <textarea id="c-question_content" {:$row.question_status=='已提交'?"":'readonly="readonly"'} class="form-control editor" rows="5" name="row[question_content]" cols="50">{$row.question_content|default=''}</textarea>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_user')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_user_id" class="form-control" name="row[question_user_id]" type="text">
+            <input id="c-question_user_id" readonly="readonly" class="form-control" name="row[question_user_id]" type="text" value="{$row.question_user|default=''}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_user_tel')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_user_tel" class="form-control" name="row[question_user_tel]" type="text">
+            <input id="c-question_user_tel" {:$row.question_status=='已提交'?"":'readonly="readonly"'} class="form-control" name="row[question_user_tel]" type="text" value="{$row.question_user_tel|default=''}">
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Question_type')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-question_type" data-rule="required" data-source="question/type/index" data-field="question_type" data-primary-key="question_type" class="form-control selectpage" name="row[question_type]" type="text" value="">
-        </div>
-    </div>
+   
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_datetime')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_datetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{:date('Y-m-d H:i:s')}">
+            
+            <input id="c-question_datetime" readonly="readonly" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{$row.question_datetime|datetime}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_files')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-12 col-sm-8" style="{:$row.question_status=='已提交'?"":"pointer-events: none;"}" >
             <div class="input-group">
-                <input id="c-question_files" class="form-control" size="50" name="row[question_files]" type="text">
+                <input id="c-question_files" readonly="readonly" class="form-control" size="50" name="row[question_files]" type="text" value="{$row.question_files|default=''}">
                 <div class="input-group-addon no-border no-padding">
-                    <span><button type="button" id="faupload-question_files" class="btn btn-danger faupload" data-input-id="c-question_files" data-multiple="true" data-preview-id="p-question_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
-                    <span><button type="button" id="fachoose-question_files" class="btn btn-primary fachoose" data-input-id="c-question_files" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                    <span><button type="button"  id="faupload-question_files" class="btn btn-danger faupload" data-input-id="c-question_files" data-multiple="true" data-preview-id="p-question_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+  
                 </div>
                 <span class="msg-box n-right" for="c-question_files"></span>
             </div>
@@ -79,30 +75,20 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Question_operaotr')}:</label>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_operaotr" class="form-control" name="row[question_operaotr]" type="text">
+            <input id="c-question_status" readonly="readonly" class="form-control "   type="text" value="{$row.question_status|default=''}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_operate_option')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-question_operate_option" class="form-control" name="row[question_operate_option]" type="text">
+            <input id="c-question_operate_option" readonly="readonly" class="form-control "  name="row[question_operate_option]" type="text" value="{$row.question_operate_option|default=''}">
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Question_status')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            
-            <div class="radio">
-            {foreach name="questionStatusList" item="vo"}
-            <label for="row[question_status]-{$key}"><input id="row[question_status]-{$key}" name="row[question_status]" type="radio" value="{$key}" {in name="key" value="0"}checked{/in} /> {$vo}</label> 
-            {/foreach}
-            </div>
-
-        </div>
-    </div>
-                            {/if}
+    
+    
+                          
                             <div class="form-group layer-footer">
                                 <label class="control-label col-xs-12 col-sm-2"></label>
                                 <div class="col-xs-12 col-sm-8">
@@ -111,7 +97,7 @@
                                 </div>
                             </div>
                         </form>
-                        {include file="vote/tpl" /}
+                  
                     </div>
                 </div>
             </div>
