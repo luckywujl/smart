@@ -24,7 +24,7 @@
                 <div class="panel panel-default panel-user">
                     <div class="panel-body">
                         <div class="page-header panel-post">
-                            <h2>{:$record?'修改':'提交'}问题</h2>
+                            <h2>{:$record?'查看':'提交'}问题</h2>
                         </div>
                         <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
                             {:token()}
@@ -60,19 +60,35 @@
             <input id="c-question_datetime" readonly="readonly" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[question_datetime]" type="text" value="{$row.question_datetime|datetime}">
         </div>
     </div>
+    
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_files')}:</label>
         <div class="col-xs-12 col-sm-8" style="{:$row.question_status=='已提交'?"":"pointer-events: none;"}" >
             <div class="input-group">
                 <input id="c-question_files" readonly="readonly" class="form-control" size="50" name="row[question_files]" type="text" value="{$row.question_files|default=''}">
                 <div class="input-group-addon no-border no-padding">
-                    <span><button type="button"  id="faupload-question_files" class="btn btn-danger faupload" data-input-id="c-question_files" data-multiple="true" data-preview-id="p-question_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button"  id="faupload-question_files" class="btn btn-danger faupload" data-input-id="c-question_files" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-preview-id="p-question_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
   
                 </div>
                 <span class="msg-box n-right" for="c-question_files"></span>
             </div>
             <ul class="row list-inline faupload-preview" id="p-question_files"></ul>
         </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Question_files')}:</label>
+        <div class="col-xs-12 col-sm-8" style="{:$row.question_status=='已提交'?"":"pointer-events: none;"}" >
+           <div class="input-group">
+             <input id="c-question_files" readonly="readonly" class="form-control" size="50" name="row[question_files]" type="text" value="{$row.question_files|default=''}">
+             <div class="input-group-addon no-border no-padding">
+                 <button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-question_files" data-preview-id="p-question_files" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true"><i class="fa fa-upload"></i> 上传</button>
+                 <span class="msg-box n-right" for="c-question_files"></span>
+             </div>
+           </div>
+         </div>
+         <ul class="row list-inline plupload-preview" id="p-question_files"></ul>
+     
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Question_status')}:</label>
