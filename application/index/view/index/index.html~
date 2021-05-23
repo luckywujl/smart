@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="navbar-collapse-menu">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="{:url('/')}">{:__('Home')}</a></li>
-                        <li><a href="{:url('index/user/index')}">{:__('Member center')}</a></li>
+                        <li><a href="{:url('index/user/main')}">{:__('Member center')}</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -54,7 +54,7 @@
                         <div class="index-text">
                             <div>
                                 <h1>{$site.name}</h1>
-                                <p style="color:#adb9e0;line-height:30px;">智慧住建平台(Smart housing construction platform)是将业主服务与LOT设备高度集成平台，实现小区智能化管理，使用以互联网平台为依托，人性化管理为目标的智能化平台工具，更好地为业主提供精彩。</p>
+                                <p style="color:#adb9e0;line-height:30px;">智慧社区(Smart housing construction platform)是将业主服务与LOT设备高度集成平台，实现小区智能化管理，使用以互联网平台为依托，人性化管理为目标的智能化平台工具，更好地为业主提供精彩丰富的生活全方位管家服务。</p>
 
                                 <div>
                                     <a href="{:url('index/user/index')}" class="btn bg-primary btn-xl btn-round-lg">{:__('Member center')}</a>
