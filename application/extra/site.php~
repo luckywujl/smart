@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '智慧社区',
+  'name' => '智慧住建',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.1',
