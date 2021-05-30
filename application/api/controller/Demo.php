@@ -15,9 +15,16 @@ class Demo extends Api
     //如果接口已经设置无需登录,那也就无需鉴权了
     //
     // 无需登录的接口,*表示全部
-    protected $noNeedLogin = ['test', 'test1'];
+    protected $noNeedLogin = ['test', 'test1','getorder'];
     // 无需鉴权的接口,*表示全部
     protected $noNeedRight = ['test2'];
+    
+    public function _initialize()
+    {
+        parent::_initialize();
+        $this->model = new \app\admin\model\door\Doorrecord;
+        //$this->view->assign("recordStatusList", $this->model->getRecordStatusList());
+    }
 
     /**
      * 测试方法
@@ -68,6 +75,40 @@ class Demo extends Api
     public function test3()
     {
         $this->success('返回成功', ['action' => 'test3']);
+    }
+    
+    /**
+     * 查看
+     */
+    public function getorder()
+    {
+        //当前是否为关联查询
+        $this->relationSearch = true;
+        //设置过滤方法
+        $this->request->filter(['strip_tags', 'trim']);
+        //if ($this->request->isAjax()) {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField')) {
+                return $this->selectpage();
+            }
+            //list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+            $list = $this->model
+                    ->with(['doorinfo'])
+                    ->where('record_status',0)
+                   // ->order($sort, $order)
+                    ->paginate();
+
+            foreach ($list as $row) {
+                
+                
+            }
+
+            $result = array("total" => $list->total(), "rows" => $list->items());
+
+            return json_encode($result);
+
+         
     }
 
 }

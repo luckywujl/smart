@@ -1,0 +1,70 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_code" data-rule="required" class="form-control" name="row[door_code]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_name" data-rule="required" class="form-control" name="row[door_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Io_garden')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-IO_garden" data-rule="required" class="form-control" name="row[IO_garden]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-door_type" class="form-control selectpicker" name="row[door_type]">
+                {foreach name="doorTypeList" item="vo"}
+                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_ip" class="form-control" name="row[door_ip]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_port')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_port" class="form-control" name="row[door_port]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_username" class="form-control" name="row[door_username]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_password')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_password" class="form-control" name="row[door_password]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Door_channlno')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-door_channlno" class="form-control" name="row[door_channlno]" type="text">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

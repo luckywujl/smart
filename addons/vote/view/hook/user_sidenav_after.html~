@@ -11,6 +11,9 @@
     {/if}
     <li class="list-group-heading">{:__('')}</li>
     <li class="list-group-heading">{:__('问题反馈')}</li>
-    <li class="list-group-item {:check_nav_active('vote/apply')}"><a href="{:url('index/question/apply')}"><i class="fa fa-users fa-fw"></i> {:__('我反映的问题')}</a></li>
-    
+    <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/question/record')}"><i class="fa fa-users fa-fw"></i> {:__('我反映的问题')}</a></li>
+    <li class="list-group-item {:check_nav_active('vote/post')}"><a href="{:url('index/question/post')}"><i class="fa fa-users fa-fw"></i> {:__('提交新问题')}</a></li>
+    <li class="list-group-heading">{:__('')}</li>
+    <li class="list-group-heading">{:__('门禁管理')}</li>
+    <li class="list-group-item {:check_nav_active('vote/record')}"><a href="{:url('index/question/record')}"><i class="fa fa-users fa-fw"></i> {:__('我反映的问题')}</a></li>
 </ul>

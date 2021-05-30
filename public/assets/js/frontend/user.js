@@ -61,6 +61,7 @@ define(['jquery', 'bootstrap', 'frontend', 'form', 'template'], function ($, und
                 $("input[name=captcha]").next(".input-group-btn").find("img").trigger("click");
             });
         },
+       
         changepwd: function () {
             //本地验证未通过时提示
             $("#changepwd-form").data("validator-options", validatoroptions);

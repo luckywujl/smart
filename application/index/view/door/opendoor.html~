@@ -1,0 +1,71 @@
+<style>
+    .panel-post {
+        position: relative;
+    }
+
+    .btn-post {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+    }
+
+    .img-border {
+        border-radius: 3px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    }
+</style>
+<div class="container mt-20">
+    <div id="content-container" class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {include file="common/sidenav" /}
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default panel-user">
+                    <div class="panel-body">
+                        <div class="page-header panel-post">
+                            <h2>开启门禁</h2>
+                        </div>
+                        <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                            {:token()}
+    
+   
+   
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Record_send_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input id="c-record_send_time" readonly="readonly" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[record_send_time]" type="text" value="{$row.record_send_time|datetime}">
+        </div>
+    </div>
+    
+  
+    
+    
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Record_door_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-record_door_id"  class="form-control "  name="row[record_door_id]" type="text" >
+               <OPTION value="1">大门东侧人行门禁</OPTION>
+               
+            </select>
+        </div>
+    </div>
+    
+    
+                          
+                            <div class="form-group layer-footer">
+                                <label class="control-label col-xs-12 col-sm-2"></label>
+                                <div class="col-xs-12 col-sm-8">
+                                    <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+                                    <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                                </div>
+                            </div>
+                        </form>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

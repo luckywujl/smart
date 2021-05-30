@@ -9,6 +9,7 @@ use addons\vote\model\Player;
 use addons\vote\model\Subject;
 use app\common\controller\Frontend;
 
+
 /**
  * 会员投票管理
  *

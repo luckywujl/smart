@@ -49,9 +49,8 @@ class Question extends Frontend
     	  	} 
     	  	//缩略图处理
     	  	 $pos=strpos($v['question_files'], ",");
-    	  	 if ($pos){
-    	  	 }
-          $v['question_one']=substr($v['question_files'], 0,$pos);
+    	  	 
+          $v['question_one']=$pos>0?substr($v['question_files'], 0,$pos):$v['question_files'];
     	  }
         $this->view->assign("recordList", $recordList);
         $this->view->assign("title", "我反映的问题");
