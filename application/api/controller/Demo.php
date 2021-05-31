@@ -15,7 +15,7 @@ class Demo extends Api
     //如果接口已经设置无需登录,那也就无需鉴权了
     //
     // 无需登录的接口,*表示全部
-    protected $noNeedLogin = ['test', 'test1','getorder'];
+    protected $noNeedLogin = ['test', 'test1','getorder','getcarorder'];
     // 无需鉴权的接口,*表示全部
     protected $noNeedRight = ['test2'];
     
@@ -95,18 +95,64 @@ class Demo extends Api
 
             $list = $this->model
                     ->with(['doorinfo'])
-                    ->where('record_status',0)
+                    ->where(['record_status'=>0,'record_type'=>'请求开门'])
                    // ->order($sort, $order)
                     ->paginate();
+            $result = array("total" => $list->total(), "rows" => $list->items());
+            
+            $changeresult = $this->model
+            			->where('record_id','IN',array_column($list->items(),'record_id'))
+            			->update(['record_status'=>1]);
 
             foreach ($list as $row) {
                 
                 
             }
 
-            $result = array("total" => $list->total(), "rows" => $list->items());
+            
 
             return json_encode($result);
+            //return json_encode($changeresult);
+
+         
+    }
+    
+    /**
+     * 查看开道闸任务
+     */
+    public function getcarorder()
+    {
+        //当前是否为关联查询
+        $this->relationSearch = true;
+        //设置过滤方法
+        $this->request->filter(['strip_tags', 'trim']);
+        //if ($this->request->isAjax()) {
+            //如果发送的来源是Selectpage，则转发到Selectpage
+            if ($this->request->request('keyField')) {
+                return $this->selectpage();
+            }
+            //list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+            $list = $this->model
+                    ->with(['doorinfo'])
+                    ->where(['record_status'=>0,'record_type'=>'请求开道闸'])
+                   // ->order($sort, $order)
+                    ->paginate();
+            $result = array("total" => $list->total(), "rows" => $list->items());
+            
+            $changeresult = $this->model
+            			->where('record_id','IN',array_column($list->items(),'record_id'))
+            			->update(['record_status'=>1]);
+
+            foreach ($list as $row) {
+                
+                
+            }
+
+            
+
+            return json_encode($result);
+            //return json_encode($changeresult);
 
          
     }
