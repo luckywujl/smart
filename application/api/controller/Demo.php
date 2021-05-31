@@ -95,7 +95,7 @@ class Demo extends Api
 
             $list = $this->model
                     ->with(['doorinfo'])
-                    ->where(['record_status'=>0,'record_type'=>'请求开门'])
+                    ->where(['record_status'=>0])
                    // ->order($sort, $order)
                     ->paginate();
             $result = array("total" => $list->total(), "rows" => $list->items());
